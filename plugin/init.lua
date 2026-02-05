@@ -189,7 +189,7 @@ wez.on("update-status", function(window, pane)
     {
       name = "hostname",
       func = function()
-        return "_hostnames_" --pane:get_domain_name()
+        return pane:get_domain_name()
       end,
     },
     {
