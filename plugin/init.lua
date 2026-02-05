@@ -88,9 +88,15 @@ wez.on("format-tab-title", function(tab, _, _, conf, _, _)
   local palette = conf.resolved_palette
 
   local index = tab.tab_index + 1
-  local offset = #tostring(index) + #options.separator.left_icon + (2 * options.separator.space) + 2
+
+  local remote = ""
+  if string.find(tab.active_pane.domain_name, "SSH") == 1 then
+    remote = "🌐"
+  end
+
+  local offset = #tostring(index) + #options.separator.left_icon + remote + (2 * options.separator.space) + 2
   local title = index
-    .. utilities._space(options.separator.left_icon, options.separator.space, nil)
+    .. utilities._space(remote .. options.separator.left_icon, options.separator.space, nil)
     .. tabs.get_title(tab)
 
   local width = conf.tab_max_width - offset
