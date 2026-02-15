@@ -90,7 +90,7 @@ wez.on("format-tab-title", function(tab, _, _, conf, _, _)
   local index = tab.tab_index + 1
 
   local remote = " "
-  if string.find(tab.active_pane.domain_name, "SSH") == 1 then
+  if tab.active_pane.domain_name ~= "local" then
     remote = "🌐"
   end
 
